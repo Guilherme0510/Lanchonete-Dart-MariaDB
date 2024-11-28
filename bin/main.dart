@@ -3,6 +3,7 @@ import 'dart:io';
 import './Cliente/cliente_cadastro.dart';
 import './Produto/produto_cadastro.dart';
 import './Pedido/criacaoPedido.dart';
+import './TodosPedidos/infoTodosPedidos.dart';
 
 void main() async {
   bool continuar = true;
@@ -13,7 +14,8 @@ void main() async {
     print('1. Gerenciar Clientes');
     print('2. Gerenciar Produtos');
     print('3. Adicionar Pedido');
-    print('4. Sair');
+    print('4. Ver listagem de pedidos');
+    print('5. Sair');
     String escolha = stdin.readLineSync()!;
 
     switch (escolha) {
@@ -27,6 +29,9 @@ void main() async {
         await menuPedidos();
         break;
       case '4':
+        await TodosPedidos.listarPedidos();
+        break;
+      case '5':
         continuar = false;
         print('Encerrando o sistema...');
         break;
