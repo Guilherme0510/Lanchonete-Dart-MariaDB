@@ -2,6 +2,7 @@ import 'dart:io';
 
 import './Cliente/cliente_cadastro.dart';
 import './Produto/produto_cadastro.dart';
+import './Pedido/criacaoPedido.dart';
 
 void main() async {
   bool continuar = true;
@@ -11,7 +12,8 @@ void main() async {
     print('Escolha uma opção:');
     print('1. Gerenciar Clientes');
     print('2. Gerenciar Produtos');
-    print('3. Sair');
+    print('3. Adicionar Pedido');
+    print('4. Sair');
     String escolha = stdin.readLineSync()!;
 
     switch (escolha) {
@@ -22,6 +24,9 @@ void main() async {
         await menuProdutos();
         break;
       case '3':
+        await menuPedidos();
+        break;
+      case '4':
         continuar = false;
         print('Encerrando o sistema...');
         break;
@@ -33,7 +38,7 @@ void main() async {
 
 Future<void> menuClientes() async {
   print('*** Gestão de Clientes ***');
-      await cadastrarCliente();
+  await cadastrarCliente();
 }
 
 Future<void> menuProdutos() async {
@@ -57,4 +62,9 @@ Future<void> menuProdutos() async {
     default:
       print('Opção inválida.');
   }
+}
+
+Future<void> menuPedidos() async {
+  print("***Criação de pedidos");
+  await criarPedido();
 }
